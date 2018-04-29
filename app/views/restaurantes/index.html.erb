@@ -1,0 +1,32 @@
+<h1>Listagem de Restaurantes</h1>
+
+<table id="customers">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>Especialidade</th>
+        <th colspan="3">Opcoes</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @restaurantes.each do |restaurante| %>
+      <tr>
+        <td><%= restaurante.id %></td>
+        <td><%= restaurante.nome %></td>
+        <td><%= restaurante.endereco %></td>
+        <td><%= restaurante.especialidade %></td>
+        <td><%= link_to 'Mostrar', action: 'show', id: restaurante %></td>
+        <td><%= link_to 'Editar', action: 'edit', id: restaurante %></td>
+        <td><%= link_to 'Deletar', {action: 'destroy', id: restaurante}, {method: "delete"} %></td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+<%= paginate @restaurantes %>
+<br />
+<%= link_to 'Novo', action: 'new' %>
+
+
